@@ -217,19 +217,34 @@ Try the option "splitPunct" to split the text by punctuation.`)}l(n,h,s),h=s+1}r
  findCurrentSubtitle(){if(this.recalculateCurrentSubtitleIndex(),this.currentSubtitleIndex>=0&&this.currentSubtitleIndex<this.metadata.subtitles.length){const e=this.metadata.subtitles[this.currentSubtitleIndex],r=this.getCurrentTime();if(r>=e.start&&r<=e.end)return e}}recalculateCurrentSubtitleIndex(){this.currentSubtitleIndex=this.findCurrentSubtitleIndex()}async destroy(e){var r,n;this.stop=!0,this.subtitleTrack.mode="disabled",ze(this.media).off("pause",this.onPauseHandler).off("timeupdate",this.onTimeUpdateHandler).off("seeking",this.onSeekingHandler).off("seeked",this.onSeekedHandler).off("playing",this.onPlayingHandler).off("waiting",this.onWaitingHandler).off("volumechange",this.onVolumeChangeHandler).off("ratechange",this.onRateChangeHandler),this.stopAllCurrentDubbing(),this.queue.clear(),this.media.playbackRate=this.originPlaybackRate,e?this.clearAllAudiosAndTranslation():this.clearAllAudios(),(r=this.videoVolumeControl)==null||r.terminate(),await((n=this.subtitleProcessingPipeline)==null?void 0:n.stop()),await this.queue.onIdle()}getMetadata(){return this.metadata}clearAllAudios(){for(let e of this.metadata.subtitles)e.audioId=void 0,e.id=void 0,e.audioBlobUrl&&(URL.revokeObjectURL(e.audioBlobUrl),e.audioBlobUrl=void 0)}clearAllAudiosAndTranslation(){for(let e of this.metadata.subtitles)e.audioId=void 0,e.id=void 0,e.googleTranslation=void 0,e.aiTranslation=void 0,e.audioBlobUrl&&(URL.revokeObjectURL(e.audioBlobUrl),e.audioBlobUrl=void 0)}isPlaybackSpeedChangedByUser(){const e=this.media.playbackRate.toString();return this.media.playbackRate===1||e.length<=4}
  onRateChange(){this.stop||this.currentPlayingSubtitleMap.size!==0&&(!this.isPlaybackSpeedChangedByUser()||this.media.playbackRate===0||(this.originPlaybackRate=this.media.playbackRate,this.synchronizeVideoAndDubbingSpeed()))}
  synchronizeVideoAndDubbingSpeed(){this.currentPlayingSubtitleMap.size>1?this.rateAdjuster=new dq(new gq):this.rateAdjuster=new fq(new hq);const e=new Map;for(let r of this.currentPlayingSubtitleMap)r[1].state()==="loaded"&&e.set(r[0],r[1]);e.size>0&&this.rateAdjuster.adjusterPlaybackRate(e,this.media,this.originPlaybackRate,this.getCurrentTime())}
+
+
+ // das wird das richtige element sein:
  updateSubtitleDisplay(){lt.showSubtitle?this.subtitleTrack.mode="showing":this.subtitleTrack.mode="hidden"}
- 
- /* 
- old
+
+ /*
+ // ver 0 original     
+ // ---video::cue       
+ updateSubtitleDisplay(){lt.showSubtitle?this.subtitleTrack.mode="showing":this.subtitleTrack.mode="hidden"}
  updateSubtitleSize(){ze("#subtitle-style").remove(),ze("<style>").attr("id","subtitle-style").html(`
-  video::cue { 
-  font-size: 8px !important;   
-  background-color: rgba(0, 0, 0, 0.5) !important;    
+  video::cue {
+    font-size: ${lt.subtitleSize}px;
   }
 `).appendTo("head")}
+*/
 
- old end 
- */
+/*
+ // ver  4 richtiges element anhand der farbe zu sehen
+ updateSubtitleDisplay(){lt.showSubtitle?this.subtitleTrack.mode="showing":this.subtitleTrack.mode="hidden"}
+ updateSubtitleSize(){ze("#subtitle-style").remove(),ze("<style>").attr("id","subtitle-style").html(`
+  video::cue {
+    font-size: 4px !important;
+    background-color: rgba(0, 0, 0, 0.5);    
+  }
+`).appendTo("head")}
+*/
+
+// ver 5  falsches element wird schoen vom regler scaliert
 updateSubtitleSize() {
     // Entferne den alten Style-Block, falls er noch existiert
     let styleBlock = document.getElementById("custom-subtitle-style");
