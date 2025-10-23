@@ -43,7 +43,7 @@
    "name": "YouTube DubbingDubbing 55My",
    "permissions": [ "storage", "contextMenus", "activeTab", "webRequest" ],
    "update_url": "https://clients2.google.com/qq66yy",
-   "version": "55.10",
+   "version": "55.11",
    "idxq":"---idxq_2403---2025_10_23---13_58_21 NoUpd##  ht  tps://clients2.goo  gle.com/service/update2/crx",
    "web_accessible_resources": [ {
       "matches": [ "*://*/*" ],
