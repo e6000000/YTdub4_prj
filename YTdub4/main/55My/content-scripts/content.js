@@ -221,9 +221,21 @@ Try the option "splitPunct" to split the text by punctuation.`)}l(n,h,s),h=s+1}r
 
 // das wird das richtige element sein:
 updateSubtitleDisplay(){lt.showSubtitle?this.subtitleTrack.mode="showing":this.subtitleTrack.mode="hidden"}
-
 // ---video::cue    
 //NEWCODE:
+/** /// ver 0  original  // transform: scale(${scaleValue}) !important;  // Skaliert das gesamte Untertitel-Element
+// font-size: ${lt.subtitleSize}px;
+// background-color: rgba(   ${lt.subtitleSize}  , 150, 200, 0.5);
+updateSubtitleSize(){ze("#subtitle-style").remove(),ze("<style>").attr("id","subtitle-style").html(`
+  video::cue {
+
+    transform: scale(${scaleValue}) ;
+    background-color: rgba(   ${lt.subtitleSize}  , 150, 200, 0.5);
+  }
+  `).appendTo("head")}
+/* * /
+
+/** /// ver 6  scaliert die YT default caption
 updateSubtitleSize() {
     // Die ID für unser benutzerdefiniertes Style-Element, um es später wiederzufinden
     const styleId = 'custom-subtitle-style';
@@ -245,18 +257,14 @@ updateSubtitleSize() {
 
     // Erstelle die neue CSS-Regel mit dem richtigen Selektor 'video::cue'
     // und der funktionierenden 'transform: scale' Logik.
+    // transform: scale(${scaleValue}) !important;  // Skaliert das gesamte Untertitel-Element
     let newStyle = `
       video::cue {
-          /* Skaliert das gesamte Untertitel-Element */
-          transform: scale(${scaleValue}) !important;
 
-          /* Behält den Ursprung der Skalierung am unteren Rand, damit es sauber aussieht */
-          transform-origin: bottom !important;
+          transform: scale(${scaleValue}) !important; 
 
-          /* Optional: Fügt eine Hintergrundfarbe hinzu, um die Lesbarkeit zu verbessern */
-          background-color: rgba(0, 150, 200, 0.5) !important;
-          
-          /* nu. font-size: 14px !important; */
+          background-color: rgba(0, 150, 200, 0.5);
+
       }
     `;
 
@@ -266,6 +274,76 @@ updateSubtitleSize() {
     styleElement.textContent = newStyle;
     document.head.appendChild(styleElement);
 }
+/**/
+
+/**/// ver 7   Finale Version mit Test-Anzeige
+function updateSubtitleSize() {
+    // Die ID für unser benutzerdefiniertes Style-Element
+    const styleId = 'custom-subtitle-style';
+
+    // Altes Style-Element entfernen, falls vorhanden
+    let styleBlock = document.getElementById(styleId);
+    if (styleBlock) {
+        styleBlock.remove();
+    }
+
+    // Slider-Wert abrufen (Standardwert ist 30)
+    let subtitleSize = lt.subtitleSize || 30;
+
+    // Den Slider-Wert (0-100) in einen Skalierungsfaktor von 0.0 bis 0.6 umrechnen
+    let scaleValue = (subtitleSize / 100) * 0.6;
+
+    // Neue CSS-Regel erstellen
+    let newStyle = `
+      video::cue {
+          transform: scale(${scaleValue}) !important;
+          transform-origin: bottom !important;
+          background-color: rgba(0, 0, 0, 0.5) !important;
+      }
+    `;
+
+    // CSS-Regel in den <head> injizieren
+    const styleElement = document.createElement('style');
+    styleElement.id = styleId;
+    styleElement.textContent = newStyle;
+    document.head.appendChild(styleElement);
+
+
+    // --- ANFANG: Code für die Test-Anzeige ---
+
+    const debugId = 'my-debug-div'; // Eine einzigartige ID für unser Test-Feld
+    let debugDiv = document.getElementById(debugId);
+
+    // Wenn das Test-Feld noch nicht existiert, erstelle es
+    if (!debugDiv) {
+        debugDiv = document.createElement('div');
+        debugDiv.id = debugId;
+
+        // CSS-Stile für das Test-Feld
+        Object.assign(debugDiv.style, {
+            position: 'fixed',    // Immer an der gleichen Stelle im Fenster
+            top: '20px',          // 20px vom oberen Rand
+            left: '20px',         // 20px vom linken Rand
+            backgroundColor: 'rgba(0,0,0,0.8)',
+            color: 'white',
+            padding: '10px',
+            zIndex: '99999',      // Stellt sicher, dass es über fast allem liegt
+            fontFamily: 'monospace',
+            borderRadius: '8px'
+        });
+
+        // Füge das neue Feld zur Seite hinzu
+        document.body.appendChild(debugDiv);
+    }
+
+    // Aktualisiere den Inhalt des Test-Felds mit den aktuellen Werten
+    // toFixed(2) rundet den Wert auf 2 Nachkommastellen
+    debugDiv.innerHTML = `Slider: ${subtitleSize} <br> scal= ${scaleValue.toFixed(2)}`;
+
+    // --- ENDE: Code für die Test-Anzeige ---
+}
+/* */
+
 //NEWCODE_END
 
             updateCurrentDubbingVolume(){for(let[e,r]of this.currentPlayingSubtitleMap.entries())r.volume(lt.translationVolume)}
