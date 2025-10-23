@@ -38,11 +38,12 @@
       "48": "icon/48.png",
       "96": "icon/96.png"
    },
-   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAsk5cZ10brxpHVORM6GPohHuJCxLzX3ssxeXhvrXTHItEm0H5cKYkbetFX8RhicJLezh8QUzkYXFYrBq/iUgK9+PNtWvOugwn65Gci9D3vuxeHNCNwP09fd8mcVZPrcxxb2TtmmW9ZcRkMQf7FGm0tSZzwW15CmUehLlBEQ0E58aTRbNhRdVrlIeYNoaK05vawh0VCSkL2n3enHAMSTvrfgSS7zo4r8D1zOcGpjfzmkIk4PiLksOExZ+MmTgxzrHbhmkNGB8WS/jy2EsXStrXilBDIWdy7VeyvdQGUEUbkZboWvxC/nXgeMvXuKTV/zep2XYQqSqVbeGJa4E+UTRESwIDAQAB",
+   "key": "manifest_json_key is in -ori4 Folder XXXXXMIIBIIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAsk5cZ10brxpHVORM6GPohHm0H5c",
    "manifest_version": 3,
+   
    "name": "YouTube DubbingDubbing 55My",
    "permissions": [ "storage", "contextMenus", "activeTab", "webRequest" ],
-   "no_update_url": "https://clients2.google.com/service/update2/crx",
+   "no_upd_ate_url": "https://clients2.google.com/service/update2/crx",
    "version": "55.55",
    "idxq":"---idxq_2397---2025_10_23---03_05_53 x",
    "web_accessible_resources": [ {
