@@ -1,7 +1,9 @@
 {
+   "name": "YouTube DubbingDubbing 55My",
+   "version": "55.13",
    "action": {
-      "default_popup": "popup.html",
-      "default_title": "YouTube-DubbingDubbing-55My"
+     "default_title": "YouTube-DubbingDubbing-55My"
+     "default_popup": "popup.html",
    },
    "background": {
       "service_worker": "background.js"
@@ -38,13 +40,10 @@
       "48": "icon/48.png",
       "96": "icon/96.png"
    },
+   "update_url": "https://clients2.google.com/qq66yy/clients2.goo  gle.com/service/update2/crx", 
    "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAsk5cZ10brxpHVORM6GPohHuJCxLzX3ssxeXhvrXTHItEm0H5cKYkbetFX8RhicJLezh8QUzkYXFYrBq/iUgK9+PNtWvOugwn65Gci9D3vuxeHNCNwP09fd8mcVZPrcxxb2TtmmW9ZcRkMQf7FGm0tSZzwW15CmUehLlBEQ0E58aTRbNhRdVrlIeYNoaK05vawh0VCSkL2n3enHAMSTvrfgSS7zo4r8D1zOcGpjfzmkIk4PiLksOExZ+MmTgxzrHbhmkNGB8WS/jy2EsXStrXilBDIWdy7VeyvdQGUEUbkZboWvxC/nXgeMvXuKTV/zep2XYQqSqVbeGJa4E+UTRESwIDAQAB",
    "manifest_version": 3,
-   "name": "YouTube DubbingDubbing 55My",
    "permissions": [ "storage", "contextMenus", "activeTab", "webRequest" ],
-   "update_url": "https://clients2.google.com/qq66yy",
-   "version": "55.11",
-   "idxq":"---idxq_2403---2025_10_23---13_58_21 NoUpd##  ht  tps://clients2.goo  gle.com/service/update2/crx",
    "web_accessible_resources": [ {
       "matches": [ "*://*/*" ],
       "resources": [ "images/*" ]
