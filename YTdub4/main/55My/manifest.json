@@ -41,7 +41,7 @@
       "96": "icon/96.png"
    },
    "update_url": "https://clients2.google.com/qq66yy/clients2.goo  gle.com/service/update2/crx", 
-   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAsk5cZ10brxpHVORM6GPohHuJCxLzX3ssxeXhvrXTHItEm0H5cKYkbetFX8RhicJLezh8QUzkYXFYrBq/iUgK9+PNtWvOugwn65Gci9D3vuxeHNCNwP09fd8mcVZPrcxxb2TtmmW9ZcRkMQf7FGm0tSZzwW15CmUehLlBEQ0E58aTRbNhRdVrlIeYNoaK05vawh0VCSkL2n3enHAMSTvrfgSS7zo4r8D1zOcGpjfzmkIk4PiLksOExZ+MmTgxzrHbhmkNGB8WS/jy2EsXStrXilBDIWdy7VeyvdQGUEUbkZboWvxC/nXgeMvXuKTV/zep2XYQqSqVbeGJa4E+UTRESwIDAQAB",
+   "key": "MIIbrxpHVORM6GPohHuJCxLzX3ssxeXhvrXTHItEm0H5cKYkbetFX8RhicJLezh8QUzkYXFYrBq/iUgK9+PNtWvOugwn65Gci9D3vuxeHNCNwP09fd8mcVZPrcxxb2TtmmW9ZcRkMQf7FGm0tSZzwW15CmUehLlBEQ0E58aTRbNhRdVrlIeYNoaK05vawh0VCSkL2n3enHAMSTvrfgSS7zo4r8D1zOcGpjfzmkIk4PiLksOExZ+MmTgxzrHbhmkNGB8WS/jy2EsXStrXilBDIWdy7VeyvdQGUEUbkZboWvxC/nXgeMvXuKTV/zep2XYQqSqVbeGJa4E+UTRESwIDAQAB",
    "manifest_version": 3,
    "permissions": [ "storage", "contextMenus", "activeTab", "webRequest" ],
    "web_accessible_resources": [ {
